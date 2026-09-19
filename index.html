@@ -34,10 +34,6 @@
             overflow-x: hidden;
         }
 
-        /* =========================
-           Animated Gaming Background
-        ========================== */
-
         #gamingCanvas {
             position: fixed;
             inset: 0;
@@ -82,18 +78,9 @@
         }
 
         @keyframes gridMove {
-            from {
-                background-position: 0 0;
-            }
-
-            to {
-                background-position: 0 55px;
-            }
+            from { background-position: 0 0; }
+            to { background-position: 0 55px; }
         }
-
-        /* =========================
-           Header
-        ========================== */
 
         header {
             position: sticky;
@@ -168,10 +155,6 @@
             border-color: rgba(139,92,246,.35);
             box-shadow: 0 0 18px rgba(139,92,246,.12);
         }
-
-        /* =========================
-           Hero
-        ========================== */
 
         .hero {
             width: min(1200px, 92%);
@@ -266,10 +249,6 @@
         .hero-btn:hover {
             transform: translateY(-3px) scale(1.02);
         }
-
-        /* =========================
-           Games Section
-        ========================== */
 
         .container {
             width: min(1200px, 92%);
@@ -450,10 +429,6 @@
             box-shadow: 0 0 25px rgba(139,92,246,.45);
         }
 
-        /* =========================
-           Pagination
-        ========================== */
-
         .pagination {
             display: flex;
             justify-content: center;
@@ -481,10 +456,6 @@
             box-shadow: 0 0 20px rgba(139,92,246,.25);
         }
 
-        /* =========================
-           Footer
-        ========================== */
-
         footer {
             border-top: 1px solid rgba(255,255,255,.08);
             background: rgba(2,2,10,.75);
@@ -496,10 +467,6 @@
         footer strong {
             color: var(--cyan);
         }
-
-        /* =========================
-           Responsive
-        ========================== */
 
         @media (max-width: 1050px) {
             .games-grid {
@@ -578,12 +545,10 @@
 
 <body>
 
-    <!-- Animated background -->
     <canvas id="gamingCanvas"></canvas>
     <div class="grid"></div>
     <div class="scanlines"></div>
 
-    <!-- Header -->
     <header>
         <nav class="navbar">
 
@@ -612,7 +577,6 @@
         </nav>
     </header>
 
-    <!-- Hero -->
     <section class="hero" id="home">
 
         <div class="hero-content">
@@ -651,7 +615,6 @@
 
     </section>
 
-    <!-- Games -->
     <main class="container" id="games">
 
         <div class="section-head">
@@ -697,11 +660,18 @@
                 ۲
             </button>
 
+            <button
+                class="page-btn"
+                id="page3Btn"
+                onclick="showPage(3)"
+            >
+                ۳
+            </button>
+
         </div>
 
     </main>
 
-    <!-- Footer -->
     <footer>
 
         <p>
@@ -717,10 +687,6 @@
 
 
 <script>
-
-    /* ==========================================
-       Games Database
-    ========================================== */
 
     const games = [
 
@@ -881,20 +847,99 @@
 
         {
             page: 2,
-            title: "Hogwarts Legacy",
-            genre: "Fantasy RPG",
-            image: "https://cdn.akamai.steamstatic.com/steam/apps/990080/header.jpg",
+            title: "Dark Souls III",
+            genre: "Action RPG",
+            image: "https://cdn.akamai.steamstatic.com/steam/apps/374320/header.jpg",
             description:
-                "یک بار دیگر وارد دنیای جادویی هاگوارتز شو و در محیطی وسیع، مأموریت‌ها و رازهای جدید را کشف کن.",
-            link: "https://store.steampowered.com/app/990080/Hogwarts_Legacy/"
+                "وارد سرزمین رو به زوال Lothric شو و در یکی از سخت‌ترین و رضایت‌بخش‌ترین بازی‌های اکشن-نقش‌آفرینی تاریخ مبارزه کن.",
+            link: "https://store.steampowered.com/app/374320/DARK_SOULS_III/"
+        },
+
+
+        /* PAGE 3 */
+
+        {
+            page: 3,
+            title: "Horizon Zero Dawn",
+            genre: "Action RPG",
+            image: "https://cdn.akamai.steamstatic.com/steam/apps/1151640/header.jpg",
+            description:
+                "در دنیایی پساآخرالزمانی پر از ماشین‌های غول‌پیکر شبیه دایناسور، در نقش Aloy رازهای گذشته بشریت را کشف کن.",
+            link: "https://store.steampowered.com/app/1151640/Horizon_Zero_Dawn_Complete_Edition/"
+        },
+
+        {
+            page: 3,
+            title: "Death Stranding",
+            genre: "Action / Adventure",
+            image: "https://cdn.akamai.steamstatic.com/steam/apps/1190460/header.jpg",
+            description:
+                "در دنیایی عجیب و اتمسفریک، آمریکای از‌هم‌گسیخته را دوباره به هم متصل کن؛ تجربه‌ای کاملاً متفاوت و تأمل‌برانگیز.",
+            link: "https://store.steampowered.com/app/1190460/DEATH_STRANDING/"
+        },
+
+        {
+            page: 3,
+            title: "Control",
+            genre: "Action / Supernatural",
+            image: "https://cdn.akamai.steamstatic.com/steam/apps/870780/header.jpg",
+            description:
+                "در ساختمانی مخفی و تغییرشکل‌پذیر متعلق به دولت، با قدرت‌های ماورایی در برابر نیروهای عجیب مبارزه کن.",
+            link: "https://store.steampowered.com/app/870780/Control_Ultimate_Edition/"
+        },
+
+        {
+            page: 3,
+            title: "Metro Exodus",
+            genre: "Survival / FPS",
+            image: "https://cdn.akamai.steamstatic.com/steam/apps/412020/header.jpg",
+            description:
+                "از مترو‌های مسکو خارج شو و در سفری خطرناک از سراسر روسیه پساآخرالزمانی، به دنبال زندگی بهتر بگرد.",
+            link: "https://store.steampowered.com/app/412020/Metro_Exodus/"
+        },
+
+        {
+            page: 3,
+            title: "Assassin's Creed Valhalla",
+            genre: "Action RPG / Open World",
+            image: "https://cdn.akamai.steamstatic.com/steam/apps/2208920/header.jpg",
+            description:
+                "در نقش یک جنگجوی وایکینگ، انگلستان قرن نهم را فتح کن و امپراتوری خودت را در این جهان باز عظیم بساز.",
+            link: "https://store.steampowered.com/app/2208920/Assassins_Creed_Valhalla/"
+        },
+
+        {
+            page: 3,
+            title: "Ghost of Tsushima",
+            genre: "Action / Open World",
+            image: "https://cdn.akamai.steamstatic.com/steam/apps/2215430/header.jpg",
+            description:
+                "در نقش یک سامورایی، جزیره سوشیما را از حمله مغول‌ها نجات بده؛ گرافیک خیره‌کننده و مبارزات سریع در انتظار توست.",
+            link: "https://store.steampowered.com/app/2215430/Ghost_of_Tsushima_DIRECTORS_CUT/"
+        },
+
+        {
+            page: 3,
+            title: "Stardew Valley",
+            genre: "Simulation / RPG",
+            image: "https://cdn.akamai.steamstatic.com/steam/apps/413150/header.jpg",
+            description:
+                "یک مزرعه قدیمی را از نو بساز، با اهالی شهر دوست شو و زندگی آرام و دلنشین روستایی را تجربه کن.",
+            link: "https://store.steampowered.com/app/413150/Stardew_Valley/"
+        },
+
+        {
+            page: 3,
+            title: "Portal 2",
+            genre: "Puzzle",
+            image: "https://cdn.akamai.steamstatic.com/steam/apps/620/header.jpg",
+            description:
+                "با تفنگ پورتال، معماهای فیزیکی و هوشمندانه‌ای را حل کن؛ یکی از خلاقانه‌ترین بازی‌های پازل تاریخ.",
+            link: "https://store.steampowered.com/app/620/Portal_2/"
         }
 
     ];
 
-
-    /* ==========================================
-       Render Games
-    ========================================== */
 
     let currentPage = 1;
 
@@ -973,7 +1018,7 @@
                             ${game.genre}
                         </span>
 
-                        <a
+                        
                             class="download-btn"
                             href="${game.link}"
                             target="_blank"
@@ -995,10 +1040,6 @@
     }
 
 
-    /* ==========================================
-       Page Navigation
-    ========================================== */
-
     function showPage(page) {
 
         currentPage = page;
@@ -1019,13 +1060,21 @@
             description.innerHTML =
                 "صفحه اول — ۸ بازی محبوب و هیجان‌انگیز";
 
-        } else {
+        } else if (page === 2) {
 
             title.innerHTML =
                 "🚀 بازی‌های بیشتر";
 
             description.innerHTML =
                 "صفحه دوم — ۸ بازی دیگر برای کشف کردن";
+
+        } else {
+
+            title.innerHTML =
+                "🌌 بازی‌های تازه";
+
+            description.innerHTML =
+                "صفحه سوم — ۸ بازی جدید و متفاوت برای کشف کردن";
 
         }
 
@@ -1038,6 +1087,11 @@
             .getElementById("page2Btn")
             .classList
             .toggle("active", page === 2);
+
+        document
+            .getElementById("page3Btn")
+            .classList
+            .toggle("active", page === 3);
 
         renderGames(page);
 
@@ -1082,10 +1136,6 @@
 
     }
 
-
-    /* ==========================================
-       Animated Neon Particles
-    ========================================== */
 
     const canvas =
         document.getElementById("gamingCanvas");
@@ -1202,10 +1252,6 @@
 
     }
 
-
-    /* ==========================================
-       Start
-    ========================================== */
 
     window.addEventListener(
         "resize",
